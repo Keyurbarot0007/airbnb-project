@@ -16,7 +16,8 @@ const validateListing = (req,res,next) => {
 };
 
 //Index Route
-router.get("/", wrapAsync(async (req, res) => {
+router.get("/", 
+    wrapAsync(async (req, res) => {
     const allListings = await Listing.find({});
     res.render("listings/index.ejs", { allListings });
   }));
@@ -27,7 +28,8 @@ router.get("/new", (req, res) => {
 });
   
 //Show Route
-router.get("/:id", wrapAsync(async (req, res) => {
+router.get("/:id", 
+    wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", { listing });
@@ -43,7 +45,8 @@ router.post("/",
 }));
 
 //Edit Route
-router.get("/:id/edit", wrapAsync(async (req, res) => {
+router.get("/:id/edit",
+    wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/edit.ejs", { listing });
@@ -59,7 +62,8 @@ router.put("/:id",
 }));
 
 //Delete Route
-router.delete("/:id", wrapAsync(async (req, res) => {
+router.delete("/:id", 
+    wrapAsync(async (req, res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);

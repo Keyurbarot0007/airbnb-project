@@ -7,13 +7,13 @@ const Review = require("../models/review.js");
 const Listing = require("../models/listing.js");
 
 const validateReview = (req,res,next) => {
-    let {error} = reviewSchema.validate(req.body);
-      if(error){
-        let errorMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errorMsg);
-      }else{
-        next();
-      }
+  let {error} = reviewSchema.validate(req.body);
+    if(error){
+      let errorMsg = error.details.map((el) => el.message).join(",");
+      throw new ExpressError(400, errorMsg);
+    }else{
+      next();
+    }
 }
 
 //Post Review Route
